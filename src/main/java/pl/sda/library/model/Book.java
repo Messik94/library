@@ -2,10 +2,10 @@ package pl.sda.library.model;
 
 import java.util.Objects;
 
-public class Book {
+public abstract class Book {
 
-    private Author author;
-    private String title;
+    protected Author author; //bo PaperBook i AudioBook dziedziczy po nich i chce miec dostep
+    protected String title; //to samo !
 
     Book(){
 

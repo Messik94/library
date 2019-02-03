@@ -15,8 +15,9 @@ public class LibraryTest {
         // given
         Library library = new Library();
         library.setBooks(new LinkedList<Book>());
-        Book book = new Book();
-        book.setTitle("W pustyni i w puszczy");
+        Book book = new BookPaperBuilder()
+                .title("W pustyni i w puszczy")
+                .build();
         // when
         library.addBook(book);
         // then
@@ -27,8 +28,9 @@ public class LibraryTest {
     public void shouldAddBookWhenListOfBooksIsNull(){
         // given
         Library library = new Library();
-        Book book = new Book();
-        book.setTitle("W pustyni i w puszczy");
+        Book book = new BookPaperBuilder()
+                .title("W pustyni i w puszczy")
+                .build();
         // when
         library.addBook(book);
         // then

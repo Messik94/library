@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class BookBuilderTest {
+public class BookPaperBuilderTest {
 
     @Test
     public void shouldBuildBookWhenBookDetailsAreDefined(){
@@ -12,10 +12,13 @@ public class BookBuilderTest {
         String authorFirstName = "Jan";
         String authorLastName = "Kowalski";
         String title = "W pustyni i w puszczy";
+        Cover cover =  Cover.SOFT;
         // when
-        Book book = new BookBuilder().authorFirstName(authorFirstName)
+        Book book = new BookPaperBuilder()
+                .authorFirstName(authorFirstName)
                 .authorLastName(authorLastName)
                 .title(title)
+                .cover(cover)
                 .build()
         ;
         // then
@@ -23,6 +26,8 @@ public class BookBuilderTest {
         assertNotNull(book.getAuthor());
         assertEquals(authorFirstName, book.getAuthor().getFirstName());
         assertEquals(authorLastName, book.getAuthor().getLastName());
+        assertEquals(title, book.getTitle());
+        assertEquals(cover, ((BookPaper) book).getCover());
     }
 
 }
