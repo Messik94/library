@@ -2,19 +2,19 @@ package pl.sda.library.model;
 
 import java.util.*;
 
-public class Library {
+public class Library<T extends Book> {
 
-    private List<Book> books;
+    private List<T> books;
 
-    public List<Book> getBooks() {
+    public List<T> getBooks() {
         return Collections.unmodifiableList(books);
     }
 
-    public void setBooks(List<Book> books) {
+    public void setBooks(List<T> books) {
         this.books = new LinkedList<>(books);
     }
 
-    public void addBook(Book book){
+    public void addBook(T book){
         if (books == null){
             books = new LinkedList<>();
         }
