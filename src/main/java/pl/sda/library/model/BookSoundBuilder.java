@@ -8,6 +8,7 @@ public class BookSoundBuilder {
     private String authorLastName;
     private String title;
     private Format format;
+    private int duration;
 
     public BookSoundBuilder authorFirstName(String authorFirstName) {
         this.authorFirstName = authorFirstName;
@@ -29,22 +30,27 @@ public class BookSoundBuilder {
         return this;
     }
 
+    public BookSoundBuilder duration(int duration) {
+        this.duration = duration;
+        return this;
+    }
+
     public BookSound build(){
         BookSound book = new BookSound();
-        Author author = new Author();
+        Creator author = new Creator();
         author.setFirstName(authorFirstName);
         author.setLastName(authorLastName);
         book.setAuthor(author);
         book.setTitle(title);
 
         book.setFormat(Optional.ofNullable(format).orElse(Format.MP3));
-
 //        if (format != null) {
 //            book.setFormat(format);
 //        }
 //        else{
 //            book.setFormat(Format.MP3);
 //        }
+        book.setDuration(duration);
         return book;
     }
 }

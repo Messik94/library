@@ -2,6 +2,8 @@ package pl.sda.library.model;
 
 //import java.util.Optional;
 
+import java.util.Optional;
+
 public class BookPaperBuilder{
 
     private String authorFirstName;
@@ -31,7 +33,7 @@ public class BookPaperBuilder{
 
     public BookPaper build() {
         BookPaper book = new BookPaper();
-        Author author = new Author();
+        Creator author = new Creator();
         author.setFirstName(authorFirstName);
         author.setLastName(authorLastName);
         book.setAuthor(author);
@@ -40,15 +42,15 @@ public class BookPaperBuilder{
 //        book.setCover(coverOptional.orElse(Cover.SOFT));
 //        można użyć tego powyżej (optional) lub tego poniżej (if-else)
 //
+//        if (cover != null) {
+//            book.setCover(cover);
+//        }
+//        else{
+//            book.setCover(Cover.SOFT);
+//        }
 //        trzecia opcja:
-//        book.setCover(Optional.ofNullable(this.cover).orElse(Cover.SOFT));
+        book.setCover(Optional.ofNullable(this.cover).orElse(Cover.SOFT));
 
-        if (cover != null) {
-            book.setCover(cover);
-        }
-        else{
-            book.setCover(Cover.SOFT);
-        }
         return book;
     }
 }
