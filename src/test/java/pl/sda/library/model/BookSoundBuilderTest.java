@@ -14,12 +14,14 @@ public class BookSoundBuilderTest {
         String authorLastName = "Kowalski";
         String title = "W pustyni i w puszczy";
         Format format = Format.MP3;
+        int duration = 1000;
         // when
-        Book book = new BookSoundBuilder()
+        BookSound book = new BookSoundBuilder()
                 .authorFirstName(authorFirstName)
                 .authorLastName(authorLastName)
                 .title(title)
                 .format(format)
+                .duration(duration)
                 .build();
         // then
         assertNotNull(book);
@@ -27,6 +29,7 @@ public class BookSoundBuilderTest {
         assertEquals(authorFirstName, book.getAuthor().getFirstName());
         assertEquals(authorLastName, book.getAuthor().getLastName());
         assertEquals(title, book.getTitle());
-        assertEquals(format, ((BookSound) book).getFormat());
+        assertEquals(format, book.getFormat());
+        assertEquals(duration, book.getDuration());
     }
 }

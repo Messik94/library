@@ -2,50 +2,35 @@ package pl.sda.library.model;
 
 import java.util.Objects;
 
-public abstract class Book {
+public abstract class Book extends Medium{
 
-    protected Author author; //bo PaperBook i AudioBook dziedziczy po nich i chce miec dostep
-    protected String title; //to samo !
+    protected Creator author; //bo PaperBook i AudioBook dziedziczy po nich i chce miec dostep
 
-    Book(){
-
-    }
-
-    public Author getAuthor() {
+    public Creator getAuthor() {
         return author;
     }
 
-    public void setAuthor(Author author) {
+    public void setAuthor(Creator author) {
         this.author = author;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    @Override public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Book book = (Book) o;
-        return Objects.equals(author, book.author) &&
-                Objects.equals(title, book.title);
+        return Objects.equals(author, book.author) && Objects.equals(title, book.title);
     }
 
-    @Override
-    public int hashCode() {
+    @Override public int hashCode() {
         return Objects.hash(author, title);
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "author=" + author +
-                ", title='" + title + '\'' +
-                '}';
+    @Override public String toString() {
+        return "Book{" + "author=" + author + ", title='" + title + '\'' + '}';
     }
+
 }
