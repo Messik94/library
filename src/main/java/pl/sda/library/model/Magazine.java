@@ -2,21 +2,21 @@ package pl.sda.library.model;
 
 import java.util.Objects;
 
-public class BookPaper extends Book implements PaperMedium{
+public class Magazine extends Medium implements PaperMedium{
 
-    private Cover cover;
+    private int number;
     private int pageCount;
 
-    BookPaper() {
+    Magazine(){
 
     }
 
-    public Cover getCover() {
-        return cover;
+    public int getNumber() {
+        return number;
     }
 
-    public void setCover(Cover cover) {
-        this.cover = cover;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     @Override
@@ -34,21 +34,22 @@ public class BookPaper extends Book implements PaperMedium{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        BookPaper bookPaper = (BookPaper) o;
-        return cover == bookPaper.cover;
+        Magazine magazine = (Magazine) o;
+        return number == magazine.number &&
+                pageCount == magazine.pageCount;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), cover);
+        return Objects.hash(super.hashCode(), number, pageCount);
     }
 
     @Override
     public String toString() {
-        return "PaperBook{" +
-                "author=" + author +
+        return "Magazine{" +
+                "number=" + number +
+                ", pageCount=" + pageCount +
                 ", title='" + title + '\'' +
-                ", cover=" + cover.getName() +
                 '}';
     }
 }
