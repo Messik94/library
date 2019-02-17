@@ -2,6 +2,7 @@ package pl.sda.library;
 
 import pl.sda.library.command.Command;
 import pl.sda.library.command.DisplayMultimediaCommand;
+import pl.sda.library.command.FilterByTypeCommand;
 import pl.sda.library.model.*;
 
 import java.util.HashMap;
@@ -17,6 +18,7 @@ public class Main {
         Map<String, Command> commands = new HashMap<>();
         commands.put("exit", () -> System.exit(0));
         commands.put("display", new DisplayMultimediaCommand(library, System.out));
+        commands.put("filter", new FilterByTypeCommand(library, System.out));
         while(true){
             System.out.println("Podaj komende: ");
             String commandName = scanner.nextLine();
@@ -24,8 +26,8 @@ public class Main {
             Optional.ofNullable(command).ifPresent(Command::execute);
         }
 
-        //library.getMedia().forEach(System.out::println);
-
+//        library.getMedia().forEach(System.out::println);
+//
 //        for (Medium medium : library.getMedia()){
 //            System.out.println(medium);
 //        }
