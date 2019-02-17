@@ -10,6 +10,7 @@ public class BookPaperBuilder{
     private String authorLastName;
     private String title;
     private Cover cover;
+    private int pageCount;
 
     public BookPaperBuilder authorFirstName(String authorFirstName) {
         this.authorFirstName = authorFirstName;
@@ -28,6 +29,11 @@ public class BookPaperBuilder{
 
     public BookPaperBuilder cover(Cover cover){
         this.cover = cover;
+        return this;
+    }
+
+    public BookPaperBuilder pageCount(int pageCount) {
+        this.pageCount = pageCount;
         return this;
     }
 
@@ -50,6 +56,7 @@ public class BookPaperBuilder{
 //        }
 //        trzecia opcja:
         book.setCover(Optional.ofNullable(this.cover).orElse(Cover.SOFT));
+        book.setPageCount(pageCount);
 
         return book;
     }
