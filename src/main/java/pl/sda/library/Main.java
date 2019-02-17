@@ -1,10 +1,35 @@
 package pl.sda.library;
 
+import pl.sda.library.command.Command;
 import pl.sda.library.model.*;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+        Library<Medium> library = createLibrary();
+        Scanner scanner = new Scanner(System.in);
+        Map<String, Command> commands = new HashMap<>();
+        commands.put("exit", () -> System.exit(0));
+        while(true){
+            System.out.println("Podaj komende: ");
+            String commandName = scanner.nextLine();
+            Command command = commands.get(commandName);
+            Optional.ofNullable(command).ifPresent(Command::execute);
+        }
+
+        //library.getMedia().forEach(System.out::println);
+
+//        for (Medium medium : library.getMedia()){
+//            System.out.println(medium);
+//        }
+    }
+
+    private static Library<Medium> createLibrary() {
         Library<Medium> library = new Library<>(); // drugie <> nie trzeba Medium
         library.addMedium(new BookPaperBuilder()
                 .authorFirstName("Carol")
@@ -47,10 +72,6 @@ public class Main {
         library.addMedium(new MovieBuilder().title("Zielona mila").directorFirstName("Frank")
                 .directorLastName("Darabont").duration(180).build());
 
-        library.getMedia().forEach(System.out::println);
-
-//        for (Medium medium : library.getMedia()){
-//            System.out.println(medium);
-//        }
+        return library;
     }
 }
