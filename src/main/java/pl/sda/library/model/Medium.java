@@ -14,6 +14,10 @@ public abstract class Medium {
         this.title = title;
     }
 
+    public String getType(){
+        return getClass().getSimpleName();
+    }
+
     @Override public boolean equals(Object o) {
         if (this == o) {
             return true;
