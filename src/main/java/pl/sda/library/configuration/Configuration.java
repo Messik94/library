@@ -11,7 +11,6 @@ public class Configuration {
     }
 
     public static Configuration getInstance(){
-        //TODO
         if (instance == null){
             instance = new Configuration();
         }

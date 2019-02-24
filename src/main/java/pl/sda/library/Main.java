@@ -22,6 +22,7 @@ public class Main {
         commands.put("display", new DisplayMultimediaCommand(library, System.out));
         commands.put("filter", new FilterByTypeCommand(library, System.out));
         commands.put("create", new AddNewMediumCommand(library, System.out));
+        //commands.put("borrow")
         while(true){
             System.out.println("Podaj komende: ");
             String commandName = scanner.nextLine();
