@@ -51,6 +51,7 @@ public class BookSoundBuilder {
 //            book.setFormat(Format.MP3);
 //        }
         book.setDuration(duration);
+        book.setState(new ReturnedState());
         return book;
     }
 }

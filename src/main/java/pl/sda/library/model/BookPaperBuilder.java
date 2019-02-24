@@ -57,7 +57,7 @@ public class BookPaperBuilder{
 //        trzecia opcja:
         book.setCover(Optional.ofNullable(this.cover).orElse(Cover.SOFT));
         book.setPageCount(pageCount);
-
+        book.setState(new ReturnedState());
         return book;
     }
 }
